@@ -16,7 +16,7 @@ var questions =[
 ]
 function startQuiz (){
     timerId= setInterval(clockTick,1000)
-    document.querySelector('#start').setAttribute("class","hide")
+    document.querySelector('#start-btn').setAttribute("class","hide")
     getquestion()
 }
 function getquestion(){
@@ -26,4 +26,4 @@ function clockTick(){
     timeLeft--
     console.log(timeLeft)
 }
-document.querySelector('#start').addEventListener("click",startQuiz)
+document.querySelector('#start-btn').addEventListener("click",startQuiz)
