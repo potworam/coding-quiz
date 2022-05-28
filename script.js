@@ -11,18 +11,7 @@ let shuffledQuestions, currentQuestionIndex
 
 var timeLeft= 60
 var currentQuestionindex =0
-const questions =[
-    {
-        title:"question here",
-        choices: ["choice one","choice two","choice3","choice4"],
-        answer: "choice3"
-    },
-    {
-        title:"question here",
-        choices: ["choice one","choice two","choice3","choice4"],
-        answer: "choice3"
-    }
-]
+
 startButton.addEventListener('click',startGame)
 nextButton.addEventListener('click',()=>{
     currentQuestionIndex++
@@ -34,23 +23,23 @@ function startGame (){
     shuffledQuestions = questions.sort(() => Math.random()-.5)
     currentQuestionIndex = 0
    questionContainerElement.classList.remove('hide')
-    getQuestion()
+    setNextQuestion()
 }
-function getQuestion(){
+function setNextQuestion(){
     resetState()
     showQuestion (shuffledQuestions[currentQuestionIndex])
 }
 function showQuestion (question){
-questionElement.innerText = question.question
-question.answers.forEach(answer =>{
-    const button = document.createElement('button')
-    button.innerText = answer.text
-    button.classList.add('btn')
+    questionElement.innerText = question.question
+    question.answers.forEach (answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
     if (answer.correct){
         button.dataset.correct= answer.correct
     }
-    button.addEventListener('click',selectAnswer)
-    answerButtonsElement.appendChild(button)
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
 })
 }
 function clockTick(){
@@ -92,5 +81,19 @@ function setStatusClass(element, correct){
     element.classList.remove('wrong')
  } 
 }
+const questions =[
+    {
+        question:"question here",
+        answers: [{text:'choice 1', correct: true},
+        {text:'choice 2', correct: false}],
+        
+    },
+    {
+
+        question:"question here?",
+        answers: [{text:'choice 3', correct: true},
+        {text:'choice 4', correct: false}],
+    }
+] 
 // pretty sure this is for color change background
-document.querySelector('#start-btn').addEventListener("click",startQuiz)
+document.querySelector('#start-btn').addEventListener("click",startGame)
