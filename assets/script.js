@@ -9,7 +9,7 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 let shuffledQuestions, currentQuestionIndex 
 var timerelement = document.getElementById("countdown")
-var timeLeft= 60
+var timeLeft= 10
 var currentQuestionindex =0
 
 startButton.addEventListener('click',startGame)
